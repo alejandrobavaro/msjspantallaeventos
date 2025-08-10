@@ -1,0 +1,296 @@
+/* ========================================================= */
+/* _03-Componentes/_Contacto.scss - Estilo Moderno           */
+/* ========================================================= */
+
+/* 1. Estructura Base - Mobile First */
+.contacto-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: #fef6f6;
+}
+
+/* 2. Secciones Comunes */
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  color: #ff5e8a;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  
+  .title-icon {
+    font-size: 1.3rem;
+  }
+}
+
+.section-subtitle {
+  font-family: 'Poppins', sans-serif;
+  color: #666;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+/* 3. Sección de Información */
+.info-section {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(255, 94, 138, 0.1);
+  
+  .info-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.feature-card {
+  background: rgba(255, 94, 138, 0.05);
+  border: 1px solid rgba(255, 94, 138, 0.1);
+  border-radius: 8px;
+  padding: 1.2rem;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 94, 138, 0.1);
+    border-color: rgba(255, 94, 138, 0.2);
+  }
+  
+  h3 {
+    font-family: 'Poppins', sans-serif;
+    color: #ff5e8a;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  p {
+    font-family: 'Poppins', sans-serif;
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}
+
+/* 4. Sección de Formulario */
+.form-section {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(255, 94, 138, 0.1);
+}
+
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-group {
+  .form-input, .form-textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+    
+    &:focus {
+      outline: none;
+      border-color: #ff5e8a;
+      box-shadow: 0 0 0 3px rgba(255, 94, 138, 0.1);
+    }
+    
+    &::placeholder {
+      color: #aaa;
+    }
+  }
+  
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+}
+
+.submit-btn {
+  background: linear-gradient(90deg, #ff5e8a, #ff8a5e);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 94, 138, 0.3);
+  }
+  
+  &:active {
+    transform: translateY(1px);
+  }
+  
+  .btn-icon {
+    font-size: 1.1rem;
+  }
+}
+
+/* 5. Sección de Demo */
+.demo-section {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(255, 94, 138, 0.1);
+}
+
+.slider-container {
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.demo-slider {
+  position: relative;
+  
+  .slider-item {
+    position: relative;
+    
+    .demo-photo {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.2), rgba(0,0,0,0.05));
+    }
+  }
+
+  .slick-dots {
+    bottom: 10px;
+    
+    li {
+      margin: 0 3px;
+      
+      button:before {
+        font-size: 10px;
+        color: white;
+        opacity: 0.7;
+        transition: all 0.2s ease;
+      }
+      
+      &.slick-active button:before {
+        color: #ff5e8a;
+        opacity: 1;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+/* ========================================================= */
+/* RESPONSIVE: Tablet (768px)                                */
+/* ========================================================= */
+@media (min-width: 768px) {
+  .contacto-container {
+    padding: 2rem;
+    gap: 2.5rem;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+    
+    .title-icon {
+      font-size: 1.5rem;
+    }
+  }
+  
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .feature-card {
+    padding: 1.5rem;
+    
+    h3 {
+      font-size: 1.2rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+  
+  .demo-slider {
+    .slider-item {
+      .demo-photo {
+        height: 300px;
+      }
+    }
+  }
+}
+
+/* ========================================================= */
+/* RESPONSIVE: Desktop (1024px)                              */
+/* ========================================================= */
+@media (min-width: 1024px) {
+  .contacto-container {
+    max-width: 1200px;
+    padding: 3rem 2rem;
+    gap: 3rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .features-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .demo-slider {
+    .slider-item {
+      .demo-photo {
+        height: 400px;
+      }
+    }
+  }
+}

@@ -1,0 +1,239 @@
+/* ========================================================= */
+/* _03-Componentes/_Footer.scss - Estilo Moderno Juvenil     */
+/* ========================================================= */
+
+/* 1. Estructura Base - Mobile First */
+.footer {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem 1rem 1rem;
+  position: relative;
+  z-index: 100;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Barra superior neon */
+.footer-neon-bar {
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(90deg, #ff5e8a, #ff8a5e, #ff5e8a);
+  background-size: 200% auto;
+  animation: neonBar 3s linear infinite;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@keyframes neonBar {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* 2. Contenido Principal */
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+/* 3. Sección de Redes Sociales */
+.social-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.social-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem;
+  // background: rgba(255, 94, 138, 0.1);
+  border-radius: 8px;
+  color: #555;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(255, 94, 138, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  .social-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  
+  &.whatsapp {
+    .social-icon {
+      color: #25D366; /* Verde de WhatsApp */
+    }
+  }
+}
+
+/* 4. Botón de Contacto */
+.contact-btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  // background: linear-gradient(90deg, #ff5e8a, #ff8a5e);
+  color: rgb(255, 0, 242);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(255, 94, 138, 0.3);
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 94, 138, 0.4);
+  }
+  
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+/* 5. Botón para volver arriba */
+.scroll-top-btn {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 4rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  
+  .scroll-top-icon {
+    font-size: 2rem;
+    color: #ff5e8a;
+    transition: all 0.3s ease;
+  }
+  
+  &:hover .scroll-top-icon {
+    transform: translateY(-5px);
+  }
+}
+
+/* 6. Sección de Créditos */
+.credits {
+  padding: 1rem 0 0;
+  text-align: center;
+  border-top: 1px solid rgba(255, 94, 138, 0.2);
+  margin-top: 1rem;
+  
+  .credits-link {
+    color: #888;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      color: #ff5e8a;
+      
+      .sparkle {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  
+  .sparkle {
+    display: inline-block;
+    transition: all 0.6s ease;
+    color: #ff8a5e;
+  }
+}
+
+/* ========================================================= */
+/* RESPONSIVE: Tablet (768px)                                */
+/* ========================================================= */
+@media (min-width: 768px) {
+  .footer {
+    padding: 2.5rem 1.5rem 1.5rem;
+  }
+  
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+  }
+  
+  .social-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    flex: 1;
+  }
+  
+  .social-links {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 100%;
+    gap: 1rem;
+  }
+  
+  .social-link {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem 0.5rem;
+    font-size: 0.8rem;
+    
+    .social-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  .contact-btn {
+    margin-top: 0;
+    align-self: center;
+  }
+  
+  .scroll-top-btn {
+    position: static;
+    margin-left: auto;
+  }
+}
+
+/* ========================================================= */
+/* RESPONSIVE: Desktop (1024px)                              */
+/* ========================================================= */
+@media (min-width: 1024px) {
+  .footer {
+    padding: 3rem 2rem 2rem;
+  }
+  
+  .social-link {
+    font-size: 0.9rem;
+    padding: 1rem;
+  }
+  
+  .contact-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+  }
+}

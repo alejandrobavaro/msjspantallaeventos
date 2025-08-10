@@ -1,0 +1,157 @@
+/* ========================================================= */
+/* _01-General/_App.scss - Estilo Moderno Juvenil            */
+/* ========================================================= */
+
+/* --- Reset general --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  scroll-behavior: smooth;
+  font-size: 16px; /* Tamaño base más grande para mejor legibilidad */
+}
+
+body {
+  font-family: 'Poppins', sans-serif; /* Tipografía más moderna */
+  color: #333;
+  line-height: 1.6;
+  background-color: #fef6f6; /* Fondo rosado muy suave */
+  overflow-x: hidden;
+}
+
+/* --- Contenedor Principal --- */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  background: #fff;
+  box-shadow: 0 0 20px rgba(0,0,0,0.05);
+}
+
+/* --- Contenido Principal --- */
+.main-content {
+  flex: 1;
+  padding: 1rem;
+}
+
+.content-wrapper {
+  width: 100%;
+  padding: 0 1rem;
+}
+
+/* --- Tipografías --- */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 1rem;
+  font-family: 'Montserrat', sans-serif; /* Tipografía para títulos */
+  font-weight: 700;
+  color: #ff5e8a; /* Color rosado fuerte para títulos */
+}
+
+h1 {
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #ff5e8a, #ff8a5e);
+    border-radius: 3px;
+  }
+}
+
+p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* --- Botones y Links --- */
+a, button {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* --- Efectos de hover --- */
+a:hover {
+  opacity: 0.8;
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff5e8a;
+  border-radius: 4px;
+}
+
+/* ========================================================= */
+/* RESPONSIVE DESIGN - MOBILE FIRST                          */
+/* ========================================================= */
+
+/* Tablets (768px) */
+@media (min-width: 768px) {
+  .main-content {
+    padding: 1.5rem;
+  }
+  
+  .content-wrapper {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* Desktop (1024px) */
+@media (min-width: 1024px) {
+  .app-container {
+    max-width: 1200px;
+  }
+  
+  .main-content {
+    padding: 2rem;
+  }
+  
+  h1 {
+    font-size: 3rem;
+  }
+}
+
+/* --- Patrón de fondo moderno --- */
+.app-bg-pattern {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(255, 94, 138, 0.05) 0%, transparent 20%),
+      radial-gradient(circle at 90% 80%, rgba(255, 138, 94, 0.05) 0%, transparent 20%);
+    z-index: -1;
+  }
+}

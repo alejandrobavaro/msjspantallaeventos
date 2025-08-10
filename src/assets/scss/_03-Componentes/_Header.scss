@@ -1,0 +1,199 @@
+/* ========================================================= */
+/* _03-Componentes/_Header.scss - Estilo Moderno Juvenil     */
+/* ========================================================= */
+
+/* 1. Estructura Base - Mobile First */
+.app-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Barra superior neon */
+.header-neon-bar {
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(90deg, #ff5e8a, #ff8a5e, #ff5e8a);
+  background-size: 200% auto;
+  animation: neonBar 3s linear infinite;
+}
+
+@keyframes neonBar {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* 2. Navbar Principal */
+.header-navbar {
+  width: 100%;
+  padding: 0.8rem 0;
+  
+  .header-container {
+    width: 100%;
+    padding: 0 1.2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+/* 3. Logo */
+.header-logo {
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+  
+  .logo-image {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  }
+}
+
+/* 4. Botón Menú Mobile */
+.menu-toggle {
+  border: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+  
+  .menu-icon {
+    font-size: 1.8rem;
+    color: #ff5e8a;
+  }
+  
+  .menu-label {
+    font-size: 0.7rem;
+    color: #ff5e8a;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    margin-top: 0.2rem;
+  }
+}
+
+/* 5. Menú de Navegación */
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem 0;
+  
+  .nav-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1.2rem;
+    color: #555;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    overflow: hidden;
+    
+    .nav-icon {
+      margin-right: 0.8rem;
+      font-size: 1.2rem;
+      color: #ff5e8a;
+    }
+    
+    .nav-label {
+      position: relative;
+      z-index: 2;
+    }
+    
+    /* Efecto hover */
+    .nav-hover-effect {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(255,94,138,0.1), rgba(255,138,94,0.1));
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 1;
+    }
+    
+    &:hover .nav-hover-effect {
+      transform: translateX(0);
+    }
+    
+    /* Estado activo */
+    &.active {
+      color: #ff5e8a;
+      font-weight: 600;
+      
+      .nav-hover-effect {
+        transform: translateX(0);
+        background: linear-gradient(90deg, rgba(255,94,138,0.15), rgba(255,138,94,0.15));
+      }
+    }
+  }
+}
+
+/* ========================================================= */
+/* RESPONSIVE: Tablet (768px)                                */
+/* ========================================================= */
+@media (min-width: 768px) {
+  .header-navbar {
+    padding: 0.5rem 0;
+    
+    .header-container {
+      padding: 0 2rem;
+    }
+    
+    .logo-image {
+      height: 55px;
+    }
+  }
+  
+  .nav-links {
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 0;
+    
+    .nav-link {
+      padding: 0.5rem 1.5rem;
+      margin: 0 0.2rem;
+      
+      .nav-icon {
+        margin-right: 0.6rem;
+      }
+    }
+  }
+}
+
+/* ========================================================= */
+/* RESPONSIVE: Desktop (1024px)                              */
+/* ========================================================= */
+@media (min-width: 1024px) {
+  .header-navbar {
+    padding: 0.7rem 0;
+    
+    .logo-image {
+      height: 60px;
+    }
+  }
+  
+  .nav-links {
+    .nav-link {
+      padding: 0.8rem 1.8rem;
+      margin: 0 0.3rem;
+      font-size: 1.1rem;
+      
+      .nav-icon {
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
