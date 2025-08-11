@@ -1,205 +1,198 @@
-/* src/assets/scss/_03-Componentes/_EventosPanel.scss */
-/* ======================================================== */
-/* Estilos para el componente EventosPanel - Mobile First   */
-/* ======================================================== */
+/* ========================================================= */
+/* _03-Componentes/_EventosPanel.scss - Estilo Moderno       */
+/* Basado en estética de _Contacto.scss                      */
+/* ========================================================= */
 
-/* Contenedor principal */
+/* 1. Contenedor principal */
 .eventos-container {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 1rem;
-    font-family: 'Cormorant Garamond', serif;
-    color: #5A2D2D;
-    background: rgba(255, 245, 240, 0.8);
-    min-height: 100vh;
-    box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: #fef6f6; /* Fondo claro rosado */
+}
+
+/* 2. Títulos y subtítulos */
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  color: #ff5e8a;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  font-family: 'Poppins', sans-serif;
+  color: #666;
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* 3. Grid de eventos */
+.eventos-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+}
+
+/* 4. Tarjeta de evento */
+.evento-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(255, 94, 138, 0.1);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(255, 94, 138, 0.15);
   }
-  
-  /* Encabezado */
-  .eventos-container h1 {
-    font-family: 'Cinzel', serif;
-    color: #7A4F50;
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    text-align: center;
+
+  &.inactivo {
+    opacity: 0.85;
   }
-  
-  /* Texto introductorio */
-  .intro-text {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #5A2D2D;
+}
+
+/* 5. Imagen del evento */
+.evento-imagen {
+  width: 100%;
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+}
+
+/* 6. Contenido de la tarjeta */
+.evento-info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.evento-nombre {
+  font-family: 'Poppins', sans-serif;
+  color: #ff5e8a;
+  font-size: 1.2rem;
+}
+
+.evento-fecha {
+  font-family: 'Poppins', sans-serif;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.evento-desc {
+  font-family: 'Poppins', sans-serif;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* 7. Botón principal */
+.evento-btn {
+  background: linear-gradient(90deg, #ff5e8a, #ff8a5e);
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 94, 138, 0.3);
   }
-  
-  /* Grid de eventos (1 columna en mobile) */
-  .eventos-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+}
+
+/* 8. Sección para compartir link */
+.share-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  p {
+    font-size: 0.85rem;
+    color: #666;
   }
-  
-  /* Tarjeta de evento */
-  .evento-card {
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(122, 79, 80, 0.1);
-  }
-  
-  /* Estado inactivo */
-  .evento-card.inactivo {
-    opacity: 0.7;
-  }
-  
-  /* Imagen del evento */
-  .evento-imagen {
-    height: 180px;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-  }
-  
-  /* Información del evento */
-  .evento-info {
-    padding: 1rem;
-  }
-  
-  .evento-info h3 {
-    font-family: 'Cinzel', serif;
-    color: #5A2D2D;
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .evento-fecha {
-    color: #8C5E3D;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-  }
-  
-  .evento-desc {
-    color: #5A2D2D;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-bottom: 1rem;
-  }
-  
-  /* Botón de acceso */
-  .evento-btn {
-    display: block;
-    text-align: center;
-    padding: 0.8rem;
-    background: #7A4F50;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    font-family: 'Cinzel', serif;
-    font-size: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  /* Mensaje para eventos inactivos */
-  .evento-inactivo-msg {
-    text-align: center;
-    padding: 0.8rem;
-    background: #f5f5f5;
-    border-radius: 6px;
-    color: #8C5E3D;
-    font-style: italic;
-    margin-bottom: 1rem;
-  }
-  
-  /* Sección para compartir */
-  .share-section {
-    margin-top: 1rem;
-  }
-  
-  .share-section p {
-    font-size: 0.8rem;
-    color: #5A2D2D;
-    margin-bottom: 0.5rem;
-  }
-  
+
   .share-link {
     width: 100%;
     padding: 0.6rem;
-    border: 1px solid #C2A78D;
-    border-radius: 4px;
-    margin-bottom: 0.5rem;
-    font-size: 0.8rem;
-    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-family: 'Poppins', sans-serif;
+    background: rgba(255, 255, 255, 0.9);
   }
-  
+
   .copy-btn {
-    width: 100%;
-    padding: 0.6rem;
-    background: #C2A78D;
+    background: #ff5e8a;
     color: white;
     border: none;
-    border-radius: 4px;
-    font-family: 'Cinzel', serif;
-    font-size: 0.9rem;
-  }
-  
-  /* ======================================================== */
-  /* RESPONSIVE: Tablet (768px en adelante)                   */
-  /* ======================================================== */
-  @media (min-width: 768px) {
-    .eventos-container {
-      padding: 1.5rem;
-    }
-  
-    .eventos-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-    }
-  
-    .eventos-container h1 {
-      font-size: 2rem;
-    }
-  
-    .intro-text {
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  
-    .evento-card {
-      display: flex;
-      flex-direction: column;
-    }
-  
-    .evento-info {
-      padding: 1.5rem;
+    padding: 0.6rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #ff8a5e;
     }
   }
-  
-  /* ======================================================== */
-  /* RESPONSIVE: Desktop (1024px en adelante)                 */
-  /* ======================================================== */
-  @media (min-width: 1024px) {
-    .eventos-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-  
-    .eventos-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2.5rem;
-    }
-  
-    .eventos-container h1 {
-      font-size: 2.2rem;
-    }
-  
-    .evento-btn, .copy-btn {
-      padding: 0.8rem;
-      font-size: 1rem;
-    }
+}
+
+/* 9. Mensaje de evento inactivo */
+.evento-inactivo-msg {
+  font-size: 0.95rem;
+  color: #999;
+  font-style: italic;
+}
+
+/* ========================================================= */
+/* RESPONSIVE: Tablet (768px)                                */
+/* ========================================================= */
+@media (min-width: 768px) {
+  .eventos-container {
+    padding: 2rem;
+    gap: 2.5rem;
   }
+
+  .eventos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .evento-imagen {
+    height: 200px;
+  }
+}
+
+/* ========================================================= */
+/* RESPONSIVE: Desktop (1024px)                              */
+/* ========================================================= */
+@media (min-width: 1024px) {
+  .eventos-container {
+    max-width: 1200px;
+    padding: 3rem 2rem;
+    gap: 3rem;
+  }
+
+  .eventos-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .evento-imagen {
+    height: 240px;
+  }
+}

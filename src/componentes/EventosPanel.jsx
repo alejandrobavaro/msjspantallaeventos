@@ -1,28 +1,33 @@
-// src/componentes/EventosPanel.jsx
-import React from 'react';
-import { Link } from 'react-router-dom';
-import "../assets/scss/_03-Componentes/_EventosPanel.scss";
+// ===============================================
+// Componente EventosPanel
+// ===============================================
+
+import React from 'react'; // Importa React para usar JSX
+import { Link } from 'react-router-dom'; // Importa Link para navegación interna
+import "../assets/scss/_03-Componentes/_EventosPanel.scss"; // Importa estilos específicos del componente
 
 /**
  * Componente EventosPanel - Muestra los eventos disponibles con sus respectivos paneles de mensajes
  * 
- * Funcionalidades:
- * - Lista los eventos con su información básica
- * - Proporciona links para acceder a cada panel de mensajes
- * - Permite copiar el link de cada evento para compartirlo
- * - Diseño responsive mobile-first
+ * FUNCIONALIDADES PRINCIPALES:
+ * 1. Lista eventos con imagen, nombre, fecha y descripción.
+ * 2. Si el evento está activo → muestra botón para entrar y link para compartir.
+ * 3. Si está inactivo → muestra mensaje "Panel disponible pronto".
+ * 4. Diseño responsive siguiendo la estética de Contacto.jsx.
  */
 function EventosPanel() {
-  // Datos de los eventos (pueden venir de una API en el futuro)
+  // ===============================================
+  // Datos de eventos (en el futuro podrían venir de una API)
+  // ===============================================
   const eventos = [
     {
-      id: 'boda',
-      nombre: 'Boda Principal',
-      fecha: '15 de Diciembre, 2023',
-      descripcion: 'Ceremonia y recepción de nuestra boda',
-      link: '/mensajes-boda',
-      activo: true,
-      imagen: '/img/eventos/boda.jpg'
+      id: 'boda', // Identificador único
+      nombre: 'Boda Principal', // Título del evento
+      fecha: '15 de Diciembre, 2023', // Fecha del evento
+      descripcion: 'Ceremonia y recepción de nuestra boda', // Descripción breve
+      link: '/mensajes-boda', // Ruta interna para el panel
+      activo: true, // Estado activo/inactivo
+      imagen: '/img/eventos/boda.jpg' // Imagen de portada
     },
     {
       id: 'after',
@@ -44,29 +49,44 @@ function EventosPanel() {
     }
   ];
 
+  // ===============================================
+  // Render del componente
+  // ===============================================
   return (
     <div className="eventos-container">
-      {/* Encabezado del panel */}
-      <h1>Eventos y Mensajes en Vivo</h1>
-      <p className="intro-text">
-        Selecciona un evento para ver o enviar mensajes en vivo. 
+      
+      {/* Encabezado principal */}
+      <h1 className="section-title">
+        Eventos y Mensajes en Vivo
+      </h1>
+
+      {/* Subtítulo introductorio */}
+      <p className="section-subtitle intro-text">
+        Selecciona un evento para ver o enviar mensajes en vivo.
         Comparte el link con otros invitados para que todos participen.
       </p>
       
-      {/* Grid de eventos */}
+      {/* Grid de tarjetas de eventos */}
       <div className="eventos-grid">
         {eventos.map(evento => (
-          <div key={evento.id} className={`evento-card ${!evento.activo ? 'inactivo' : ''}`}>
-            {/* Imagen del evento */}
-            <div className="evento-imagen" style={{ backgroundImage: `url(${evento.imagen})` }}></div>
+          <div 
+            key={evento.id} 
+            className={`evento-card ${!evento.activo ? 'inactivo' : ''}`}
+          >
             
-            {/* Información del evento */}
+            {/* Imagen de portada del evento */}
+            <div 
+              className="evento-imagen" 
+              style={{ backgroundImage: `url(${evento.imagen})` }}
+            ></div>
+            
+            {/* Información textual del evento */}
             <div className="evento-info">
-              <h3>{evento.nombre}</h3>
+              <h3 className="evento-nombre">{evento.nombre}</h3>
               <p className="evento-fecha">{evento.fecha}</p>
               <p className="evento-desc">{evento.descripcion}</p>
               
-              {/* Sección interactiva según estado del evento */}
+              {/* Render condicional según estado activo/inactivo */}
               {evento.activo ? (
                 <>
                   {/* Botón para acceder al panel de mensajes */}
@@ -74,7 +94,7 @@ function EventosPanel() {
                     Entrar al Panel
                   </Link>
                   
-                  {/* Sección para compartir el link */}
+                  {/* Sección para compartir link */}
                   <div className="share-section">
                     <p>Compartir este evento:</p>
                     <input 
@@ -95,6 +115,7 @@ function EventosPanel() {
                   </div>
                 </>
               ) : (
+                // Mensaje si el evento está inactivo
                 <div className="evento-inactivo-msg">
                   Panel disponible pronto
                 </div>

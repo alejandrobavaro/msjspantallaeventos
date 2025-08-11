@@ -1,0 +1,537 @@
+/* ========================================================= */
+/* _03-Componentes/_PanelMensajesBodaAleyFaby.scss - Estilo Moderno */
+/* ========================================================= */
+
+/* 1. Estructura Base - Mobile First */
+.panel-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: #fef6f6;
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  /* Modo pantalla completa */
+  &.fullscreen {
+    padding: 0;
+    background: linear-gradient(135deg, #ff5e8a, #ff8a5e);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+  }
+}
+
+/* 2. Encabezado */
+.panel-header {
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.panel-title {
+  font-family: 'Montserrat', sans-serif;
+  color: #ff5e8a;
+  font-size: 1.5rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  
+  .title-icon {
+    color: #ff5e8a;
+  }
+}
+
+.panel-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.rotation-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+
+  select {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 0.5rem;
+    cursor: pointer;
+
+    option {
+      color: #ff5e8a;
+      background: white;
+    }
+  }
+}
+
+.exit-btn, .fullscreen-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid white;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
+
+.fullscreen-btn {
+  background: #ff5e8a;
+  color: white;
+  border: none;
+  
+  &:hover {
+    background: rgba(97, 13, 100, 0.699);
+  }
+}
+
+/* 3. Formulario */
+.panel-form {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(255, 94, 138, 0.1);
+  
+  .form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+
+    h3 {
+      font-family: 'Montserrat', sans-serif;
+      color: #ff5e8a;
+      font-size: 1.3rem;
+      margin: 0;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: #ff5e8a;
+      cursor: pointer;
+    }
+  }
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    color: #666;
+    font-weight: 500;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+    
+    &:focus {
+      outline: none;
+      border-color: #ff5e8a;
+      box-shadow: 0 0 0 3px rgba(255, 94, 138, 0.1);
+    }
+    
+    &::placeholder {
+      color: #aaa;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .char-counter {
+    text-align: right;
+    font-size: 0.8rem;
+    color: #aaa;
+  }
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(90deg, #ff5e8a, #ff8a5e);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 94, 138, 0.3);
+  }
+  
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+.show-form-btn {
+  width: 100%;
+  padding: 1rem;
+  background: white;
+  color: #ff5e8a;
+  border: 1px solid #ff5e8a;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(255, 94, 138, 0.05);
+  }
+}
+
+/* 4. Sección multimedia */
+.media-section {
+  margin-bottom: 1.2rem;
+
+  .media-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #ff5e8a;
+    cursor: pointer;
+    padding: 0.5rem;
+    border: 1px dashed #ff8a5e;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: rgba(255, 94, 138, 0.05);
+    }
+  }
+
+  .media-preview {
+    position: relative;
+    margin-top: 0.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+    max-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f5f5;
+
+    img, video {
+      max-width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+    }
+
+    .remove-media {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+  }
+}
+
+/* 5. Contenedor de mensajes */
+.messages-container {
+  width: 100%;
+  min-height: 60vh;
+  position: relative;
+
+  &.fullscreen-view {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(255, 94, 138, 0.1);
+
+  p {
+    margin: 0.5rem 0;
+    font-family: 'Poppins', sans-serif;
+    color: #666;
+  }
+
+  svg {
+    color: #ff5e8a;
+    margin-bottom: 1rem;
+  }
+}
+
+.messages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.message-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.2rem;
+  box-shadow: 0 2px 8px rgba(255, 94, 138, 0.1);
+  border-left: 4px solid #ff8a5e;
+  display: flex;
+  flex-direction: column;
+
+  .message-media {
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    max-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f5f5;
+
+    img, video {
+      max-width: 100%;
+      max-height: 200px;
+      object-fit: contain;
+    }
+  }
+
+  .message-text {
+    flex: 1;
+    margin: 0 0 1rem 0;
+    line-height: 1.5;
+    font-family: 'Poppins', sans-serif;
+    color: #555;
+  }
+
+  .message-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px dashed #ff8a5e;
+    padding-top: 0.5rem;
+
+    .message-author {
+      font-family: 'Poppins', sans-serif;
+      font-style: italic;
+      color: #ff5e8a;
+      font-size: 0.9rem;
+    }
+
+    .message-actions {
+      display: flex;
+      gap: 0.5rem;
+
+      button {
+        background: none;
+        border: none;
+        cursor: pointer;
+
+        &.edit-btn {
+          color: #ff5e8a;
+        }
+
+        &.delete-btn {
+          color: #ff4d4d;
+        }
+      }
+    }
+  }
+}
+
+.fullscreen-message {
+  width: 100%;
+  max-width: 800px;
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+
+  .message-media {
+    max-height: 60vh;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f5f5;
+    border-radius: 8px;
+    overflow: hidden;
+
+    img, video {
+      max-width: 100%;
+      max-height: 60vh;
+      object-fit: contain;
+    }
+  }
+
+  .message-text {
+    font-size: 1.8rem;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+    font-family: 'Dancing Script', cursive;
+    color: #333;
+    text-align: center;
+  }
+
+  .message-author {
+    font-size: 1.3rem;
+    color: #ff5e8a;
+    font-style: italic;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+.fullscreen-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.1);
+
+  .control-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  .counter {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    min-width: 80px;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+}
+
+/* ========================================================= */
+/* RESPONSIVE: Tablet (768px)                                */
+/* ========================================================= */
+@media (min-width: 768px) {
+  .panel-container {
+    padding: 2rem;
+    gap: 2.5rem;
+  }
+
+  .panel-title {
+    font-size: 1.8rem;
+  }
+
+  .messages-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .fullscreen-message {
+    padding: 3rem;
+
+    .message-text {
+      font-size: 2.2rem;
+    }
+
+    .message-author {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+/* ========================================================= */
+/* RESPONSIVE: Desktop (1024px)                              */
+/* ========================================================= */
+@media (min-width: 1024px) {
+  .panel-container {
+    max-width: 1200px;
+    padding: 3rem 2rem;
+    gap: 3rem;
+  }
+
+  .panel-title {
+    font-size: 2rem;
+  }
+
+  .messages-grid {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+
+  .fullscreen-message {
+    max-width: 900px;
+    padding: 4rem;
+
+    .message-text {
+      font-size: 2.5rem;
+    }
+
+    .message-author {
+      font-size: 1.8rem;
+    }
+  }
+}

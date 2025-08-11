@@ -6,7 +6,12 @@ import "../assets/scss/_03-Componentes/_Contacto.scss";
 import { BsEnvelope, BsSend, BsQuestionCircle } from "react-icons/bs";
 
 const Contacto = () => {
-  // Configuración del slider
+  // [SECCIÓN 1] Configuración del Slider
+  // -----------------------------------
+  // Configura las propiedades del carrusel de imágenes
+  // - Transición suave (fade)
+  // - Autoplay cada 5 segundos
+  // - Sin flechas de navegación
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -21,65 +26,76 @@ const Contacto = () => {
     pauseOnHover: true
   };
 
-  // Fotos de ejemplo del sistema de mensajes
+  // [SECCIÓN 2] Datos del Componente
+  // --------------------------------
+  // Array con las rutas de las imágenes de demostración
   const messageScreenshots = [
     "/img/02-logos/logomsjpantallaeventos4.png",
     "/img/02-logos/logomsjpantallaeventos2.png",
     "img/02-logos/logomsjpantallaeventos1.png"
   ];
 
+  // [SECCIÓN 3] Renderizado del Componente
+  // -------------------------------------
   return (
     <div className="contacto-container">
-      {/* Sección de información */}
+      {/* [SUBSECCIÓN 3.1] Sección de Información - Preguntas Frecuentes */}
       <section className="info-section">
         <div className="info-content">
+          {/* Título principal de la sección */}
           <h2 className="section-title">
             <BsQuestionCircle className="title-icon" /> 
             Soporte del Sistema de Mensajes
           </h2>
           
+          {/* Grid de tarjetas con preguntas frecuentes */}
           <div className="features-grid">
+            {/* Tarjeta individual - Cada pregunta/respuesta */}
             <div className="feature-card">
-              <h3>¿Cómo funciona?</h3>
-              <p>Envía mensajes que se mostrarán en pantalla durante el evento</p>
+              <h3 className="feature-title">¿Cómo funciona?</h3>
+              <p className="feature-text">Envía mensajes que se mostrarán en pantalla durante el evento</p>
             </div>
             
             <div className="feature-card">
-              <h3>¿Dónde se ven?</h3>
-              <p>Los mensajes aparecerán en las pantallas principales del lugar</p>
+              <h3 className="feature-title">¿Dónde se ven?</h3>
+              <p className="feature-text">Los mensajes aparecerán en las pantallas principales del lugar</p>
             </div>
             
             <div className="feature-card">
-              <h3>¿Puedo adjuntar fotos?</h3>
-              <p>Sí, puedes subir una imagen junto con tu mensaje</p>
+              <h3 className="feature-title">¿Puedo adjuntar fotos?</h3>
+              <p className="feature-text">Sí, puedes subir una imagen junto con tu mensaje</p>
             </div>
             
             <div className="feature-card">
-              <h3>¿Quién puede verlos?</h3>
-              <p>Todos los invitados podrán ver los mensajes en las pantallas</p>
+              <h3 className="feature-title">¿Quién puede verlos?</h3>
+              <p className="feature-text">Todos los invitados podrán ver los mensajes en las pantallas</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Sección de formulario de contacto */}
+      {/* [SUBSECCIÓN 3.2] Sección de Formulario de Contacto */}
       <section className="form-section">
         <div className="form-container">
+          {/* Título del formulario */}
           <h2 className="section-title">
             <BsEnvelope className="title-icon" /> 
             Contacta al Soporte Técnico
           </h2>
           
+          {/* Subtítulo descriptivo */}
           <p className="section-subtitle">
             ¿Problemas con el sistema de mensajes? Escríbenos
           </p>
           
+          {/* Formulario de contacto */}
           <form
             className="contact-form"
             action="https://formspree.io/f/xbjnlgzz"
             target="_blank"
             method="post"
           >
+            {/* Grupo de campo para el nombre */}
             <div className="form-group">
               <input
                 type="text"
@@ -91,6 +107,7 @@ const Contacto = () => {
               />
             </div>
             
+            {/* Grupo de campo para el email */}
             <div className="form-group">
               <input
                 type="email"
@@ -102,6 +119,7 @@ const Contacto = () => {
               />
             </div>
             
+            {/* Grupo de campo para el mensaje */}
             <div className="form-group">
               <textarea
                 id="mensaje"
@@ -113,6 +131,7 @@ const Contacto = () => {
               />
             </div>
             
+            {/* Botón de envío del formulario */}
             <button type="submit" className="submit-btn">
               <BsSend className="btn-icon" /> Enviar Consulta
             </button>
@@ -120,11 +139,12 @@ const Contacto = () => {
         </div>
       </section>
 
-      {/* Slider de demostración */}
+      {/* [SUBSECCIÓN 3.3] Sección de Demostración - Carrusel */}
       <section className="demo-section">
-        {/* <h2 className="section-title">Así se ven los mensajes en pantalla</h2> */}
         <div className="slider-container">
+          {/* Componente Slider con configuración */}
           <Slider {...sliderSettings} className="demo-slider">
+            {/* Mapeo de imágenes de demostración */}
             {messageScreenshots.map((photo, index) => (
               <div key={index} className="slider-item">
                 <img 
@@ -132,6 +152,7 @@ const Contacto = () => {
                   alt={`Demo del sistema ${index + 1}`} 
                   className="demo-photo"
                 />
+                {/* Overlay para efecto visual */}
                 <div className="photo-overlay"></div>
               </div>
             ))}

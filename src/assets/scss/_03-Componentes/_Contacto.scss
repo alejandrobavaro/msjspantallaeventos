@@ -2,7 +2,8 @@
 /* _03-Componentes/_Contacto.scss - Estilo Moderno           */
 /* ========================================================= */
 
-/* 1. Estructura Base - Mobile First */
+/* [SECCIÓN 1] Estructura Base - Mobile First */
+/* ------------------------------------------ */
 .contacto-container {
   width: 100%;
   max-width: 100%;
@@ -14,20 +15,21 @@
   background: #fef6f6;
 }
 
-/* 2. Secciones Comunes */
+/* [SECCIÓN 2] Estilos Comunes Reutilizables */
+/* ----------------------------------------- */
 .section-title {
   font-family: 'Montserrat', sans-serif;
   color: #ff5e8a;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
   
   .title-icon {
-    font-size: 1.3rem;
+    font-size: 1.8rem;
   }
 }
 
@@ -36,10 +38,11 @@
   color: #666;
   text-align: center;
   margin-bottom: 1.5rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
-/* 3. Sección de Información */
+/* [SECCIÓN 3] Estilos de la Sección de Información */
+/* ------------------------------------------------ */
 .info-section {
   background: white;
   border-radius: 12px;
@@ -55,38 +58,41 @@
 .features-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .feature-card {
   background: rgba(255, 94, 138, 0.05);
   border: 1px solid rgba(255, 94, 138, 0.1);
-  border-radius: 8px;
-  padding: 1.2rem;
+  border-radius: 10px;
+  padding: 1.5rem;
   transition: all 0.3s ease;
   
   &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(255, 94, 138, 0.1);
-    border-color: rgba(255, 94, 138, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 94, 138, 0.15);
+    border-color: rgba(255, 94, 138, 0.3);
   }
   
-  h3 {
+  .feature-title {
     font-family: 'Poppins', sans-serif;
+    font-weight: 600;
     color: #ff5e8a;
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
   }
   
-  p {
+  .feature-text {
     font-family: 'Poppins', sans-serif;
     color: #555;
-    font-size: 0.9rem;
-    line-height: 1.5;
+    font-size: 1rem;
+    line-height: 1.6;
   }
 }
 
-/* 4. Sección de Formulario */
+/* [SECCIÓN 4] Estilos del Formulario de Contacto */
+/* ---------------------------------------------- */
 .form-section {
   background: white;
   border-radius: 12px;
@@ -112,7 +118,7 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     font-family: 'Poppins', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     transition: all 0.3s ease;
     background: rgba(255, 255, 255, 0.9);
     
@@ -134,10 +140,11 @@
 }
 
 .submit-btn {
+  width: 100%;
+  padding: 1rem;
   background: linear-gradient(90deg, #ff5e8a, #ff8a5e);
   color: white;
   border: none;
-  padding: 1rem;
   border-radius: 8px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
@@ -155,16 +162,13 @@
     box-shadow: 0 5px 15px rgba(255, 94, 138, 0.3);
   }
   
-  &:active {
-    transform: translateY(1px);
-  }
-  
   .btn-icon {
     font-size: 1.1rem;
   }
 }
 
-/* 5. Sección de Demo */
+/* [SECCIÓN 5] Estilos del Carrusel de Demostración */
+/* ----------------------------------------------- */
 .demo-section {
   background: white;
   border-radius: 12px;
@@ -225,9 +229,8 @@
   }
 }
 
-/* ========================================================= */
-/* RESPONSIVE: Tablet (768px)                                */
-/* ========================================================= */
+/* [SECCIÓN 6] Media Queries - Responsive Design */
+/* -------------------------------------------- */
 @media (min-width: 768px) {
   .contacto-container {
     padding: 2rem;
@@ -235,27 +238,27 @@
   }
   
   .section-title {
-    font-size: 1.8rem;
+    font-size: 2rem;
     
     .title-icon {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
     }
   }
   
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: 2rem;
   }
   
   .feature-card {
-    padding: 1.5rem;
+    padding: 1.8rem;
     
-    h3 {
-      font-size: 1.2rem;
+    .feature-title {
+      font-size: 1.4rem;
     }
     
-    p {
-      font-size: 1rem;
+    .feature-text {
+      font-size: 1.1rem;
     }
   }
   
@@ -268,9 +271,6 @@
   }
 }
 
-/* ========================================================= */
-/* RESPONSIVE: Desktop (1024px)                              */
-/* ========================================================= */
 @media (min-width: 1024px) {
   .contacto-container {
     max-width: 1200px;
@@ -279,11 +279,25 @@
   }
   
   .section-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
   
   .features-grid {
     grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+  }
+  
+  .feature-card {
+    padding: 2rem;
+    
+    .feature-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .feature-text {
+      font-size: 1.15rem;
+    }
   }
   
   .demo-slider {

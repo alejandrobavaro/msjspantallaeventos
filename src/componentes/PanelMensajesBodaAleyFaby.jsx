@@ -1,36 +1,28 @@
 import React, { useState, useEffect, useRef } from "react";
-import "../assets/scss/_03-Componentes/_LinkWebMensajesNovios.scss";
+import "../assets/scss/_03-Componentes/_PanelMensajesBodaAleyFaby.scss";
 import { Heart, ChevronLeft, ChevronRight, X, Edit3, Trash2, Paperclip } from "react-feather";
 
-function LinkWebMensajesNovios({ sala = 'boda' }) {
-  // =========================================================
-  // SECCIÓN 1: ESTADOS - Manejo de todos los estados del componente
-  // =========================================================
-  const [messages, setMessages] = useState([]); // Almacena la lista de mensajes
-  const [newMessage, setNewMessage] = useState(""); // Texto del mensaje en formulario
-  const [author, setAuthor] = useState(""); // Autor del mensaje en formulario
-  const [isSending, setIsSending] = useState(false); // Estado de carga durante envío
-  const [showForm, setShowForm] = useState(true); // Controla visibilidad del formulario
-  const [editMode, setEditMode] = useState(false); // Modo edición activo/inactivo
-  const [currentIndex, setCurrentIndex] = useState(0); // Índice para mensaje en pantalla completa
-  const [isFullscreen, setIsFullscreen] = useState(false); // Controla modo pantalla completa
-  const [mediaFile, setMediaFile] = useState(null); // Archivo multimedia seleccionado
-  const [mediaPreview, setMediaPreview] = useState(null); // URL de vista previa del media
-  const [mediaType, setMediaType] = useState(null); // Tipo de media (image/video)
-  const [rotationInterval, setRotationInterval] = useState(10000); // Intervalo de rotación (ms)
+function PanelMensajesBodaAleyFaby({ sala = 'boda' }) {
+  // Estados del componente
+  const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState("");
+  const [author, setAuthor] = useState("");
+  const [isSending, setIsSending] = useState(false);
+  const [showForm, setShowForm] = useState(true);
+  const [editMode, setEditMode] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [mediaFile, setMediaFile] = useState(null);
+  const [mediaPreview, setMediaPreview] = useState(null);
+  const [mediaType, setMediaType] = useState(null);
+  const [rotationInterval, setRotationInterval] = useState(10000);
 
-  // =========================================================
-  // SECCIÓN 2: REFERENCIAS - Acceso a elementos del DOM
-  // =========================================================
-  const fileInputRef = useRef(null); // Referencia al input de archivo
-  const messagesContainerRef = useRef(null); // Referencia al contenedor de mensajes
-  const autoScrollInterval = useRef(null); // Referencia al intervalo de rotación
+  // Referencias
+  const fileInputRef = useRef(null);
+  const messagesContainerRef = useRef(null);
+  const autoScrollInterval = useRef(null);
 
-  // =========================================================
-  // SECCIÓN 3: EFECTOS - Operaciones secundarias
-  // =========================================================
-
-  // Efecto 1: Cargar mensajes guardados al iniciar
+  // Efectos
   useEffect(() => {
     const savedMessages = localStorage.getItem(`weddingMessages_${sala}`);
     if (savedMessages) {
@@ -45,7 +37,6 @@ function LinkWebMensajesNovios({ sala = 'boda' }) {
     }
   }, [sala]);
 
-  // Efecto 2: Guardar mensajes cuando cambian
   useEffect(() => {
     if (messages.length > 0) {
       try {
@@ -68,7 +59,6 @@ function LinkWebMensajesNovios({ sala = 'boda' }) {
     }
   }, [messages, sala]);
 
-  // Efecto 3: Configurar intervalo de rotación en pantalla completa
   useEffect(() => {
     if (isFullscreen && messages.length > 0) {
       autoScrollInterval.current = setInterval(() => {
@@ -78,11 +68,7 @@ function LinkWebMensajesNovios({ sala = 'boda' }) {
     }
   }, [isFullscreen, messages.length, rotationInterval]);
 
-  // =========================================================
-  // SECCIÓN 4: MANEJADORES - Funciones para interactuar con el componente
-  // =========================================================
-
-  // Manejador 1: Cambio de archivo multimedia
+  // Manejadores
   const handleMediaChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -106,7 +92,6 @@ function LinkWebMensajesNovios({ sala = 'boda' }) {
     }
   };
 
-  // Manejador 2: Eliminar multimedia seleccionado
   const removeMedia = () => {
     setMediaFile(null);
     setMediaPreview(null);
@@ -114,7 +99,6 @@ function LinkWebMensajesNovios({ sala = 'boda' }) {
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
-  // Manejador 3: Enviar formulario
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!newMessage.trim() || !author.trim()) return;
@@ -137,7 +121,6 @@ function LinkWebMensajesNovios({ sala = 'boda' }) {
     resetForm();
   };
 
-  // Manejador 4: Reiniciar formulario
   const resetForm = () => {
     setNewMessage("");
     setAuthor("");
@@ -150,12 +133,10 @@ function LinkWebMensajesNovios({ sala = 'boda' }) {
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
-  // Manejador 5: Eliminar mensaje
   const handleDelete = (id) => {
     setMessages(messages.filter(msg => msg.id !== id));
   };
 
-  // Manejador 6: Editar mensaje
   const handleEdit = (message) => {
     setNewMessage(message.text);
     setAuthor(message.author);
@@ -168,55 +149,55 @@ function LinkWebMensajesNovios({ sala = 'boda' }) {
     handleDelete(message.id);
   };
 
-  // =========================================================
-  // SECCIÓN 5: RENDERIZADO - Estructura visual del componente
-  // =========================================================
-
   return (
-    <div className={`messages-container ${isFullscreen ? 'fullscreen' : ''}`}>
-      {/* ENCABEZADO - Título y controles principales */}
-      <div className="messages-header">
-        <h2>Mensajes para los Novios</h2>
+    <div className={`panel-container ${isFullscreen ? 'fullscreen' : ''}`}>
+      {/* Encabezado */}
+      <div className="panel-header">
+        <h2 className="panel-title">
+          <Heart className="title-icon" />
+          Mensajes para los Novios
+        </h2>
 
         {isFullscreen ? (
-          <>
-            {/* Controles izquierda (intervalo) */}
-            <div className="left-controls">
-              <div className="rotation-control">
-                <span>Intervalo: </span>
-                <select
-                  value={rotationInterval}
-                  onChange={(e) => setRotationInterval(Number(e.target.value))}
-                >
-                  <option value={5000}>5 segundos</option>
-                  <option value={10000}>10 segundos</option>
-                  <option value={15000}>15 segundos</option>
-                  <option value={20000}>20 segundos</option>
-                  <option value={30000}>30 segundos</option>
-                </select>
-              </div>
+          <div className="panel-controls">
+            <div className="rotation-control">
+              <span>Intervalo: </span>
+              <select
+                value={rotationInterval}
+                onChange={(e) => setRotationInterval(Number(e.target.value))}
+              >
+                <option value={5000}>5 segundos</option>
+                <option value={10000}>10 segundos</option>
+                <option value={15000}>15 segundos</option>
+                <option value={20000}>20 segundos</option>
+                <option value={30000}>30 segundos</option>
+              </select>
             </div>
-
-            {/* Botón derecha (salir) */}
-            <button className="exit-fullscreen-btn" onClick={() => setIsFullscreen(false)}>
+            <button 
+              className="exit-btn"
+              onClick={() => setIsFullscreen(false)}
+            >
               Salir
             </button>
-          </>
+          </div>
         ) : (
-          <button className="fullscreen-btn" onClick={() => setIsFullscreen(true)}>
+          <button 
+            className="fullscreen-btn"
+            onClick={() => setIsFullscreen(true)}
+          >
             Pantalla Completa
           </button>
         )}
       </div>
 
-      {/* FORMULARIO - Para crear/editar mensajes (solo en modo normal) */}
+      {/* Formulario */}
       {!isFullscreen && showForm && (
-        <form className="message-form" onSubmit={handleSubmit}>
+        <form className="panel-form" onSubmit={handleSubmit}>
           <div className="form-header">
             <h3>{editMode ? 'Editar Mensaje' : 'Nuevo Mensaje'}</h3>
             <button
               type="button"
-              className="close-form"
+              className="close-btn"
               onClick={() => {
                 setShowForm(false);
                 setEditMode(false);
@@ -226,6 +207,7 @@ function LinkWebMensajesNovios({ sala = 'boda' }) {
               <X size={20} />
             </button>
           </div>
+          
           <div className="form-group">
             <label htmlFor="author">Tu Nombre</label>
             <input
@@ -238,6 +220,7 @@ function LinkWebMensajesNovios({ sala = 'boda' }) {
               placeholder="Ej: María y Juan"
             />
           </div>
+          
           <div className="form-group">
             <label htmlFor="message">Tu Mensaje</label>
             <textarea
@@ -251,6 +234,7 @@ function LinkWebMensajesNovios({ sala = 'boda' }) {
             />
             <div className="char-counter">{newMessage.length}/200</div>
           </div>
+          
           <div className="media-section">
             <label className="media-label">
               <input
@@ -266,9 +250,9 @@ function LinkWebMensajesNovios({ sala = 'boda' }) {
             {mediaPreview && (
               <div className="media-preview">
                 {mediaType === 'image' ? (
-                  <img src={mediaPreview} alt="Vista previa" style={{ maxWidth: '100%', maxHeight: '300px' }} />
+                  <img src={mediaPreview} alt="Vista previa" />
                 ) : (
-                  <video controls style={{ maxWidth: '100%', maxHeight: '300px' }}>
+                  <video controls>
                     <source src={mediaPreview} type={mediaFile?.type} />
                   </video>
                 )}
@@ -282,6 +266,7 @@ function LinkWebMensajesNovios({ sala = 'boda' }) {
               </div>
             )}
           </div>
+          
           <button
             type="submit"
             className="submit-btn"
@@ -292,7 +277,7 @@ function LinkWebMensajesNovios({ sala = 'boda' }) {
         </form>
       )}
 
-      {/* BOTÓN MOSTRAR FORMULARIO - Solo cuando el formulario está oculto */}
+      {/* Botón mostrar formulario */}
       {!isFullscreen && !showForm && (
         <button
           className="show-form-btn"
@@ -302,9 +287,9 @@ function LinkWebMensajesNovios({ sala = 'boda' }) {
         </button>
       )}
 
-      {/* CONTENEDOR MENSAJES - Muestra diferente según el modo */}
+      {/* Contenedor de mensajes */}
       <div
-        className={`messages-display ${isFullscreen ? 'fullscreen-display' : ''}`}
+        className={`messages-container ${isFullscreen ? 'fullscreen-view' : ''}`}
         ref={messagesContainerRef}
       >
         {messages.length === 0 ? (
@@ -315,40 +300,23 @@ function LinkWebMensajesNovios({ sala = 'boda' }) {
           </div>
         ) : isFullscreen ? (
           <div className="fullscreen-message">
-            <div className="message-content">
-              {messages[currentIndex]?.mediaUrl && (
-                <div className="message-media">
-                  {messages[currentIndex]?.mediaType === 'image' ? (
-                    <img
-                      src={messages[currentIndex].mediaUrl}
-                      alt="Media del mensaje"
-                      style={{
-                        maxWidth: '100%',
-                        maxHeight: '60vh',
-                        width: 'auto',
-                        height: 'auto',
-                        objectFit: 'contain'
-                      }}
-                    />
-                  ) : (
-                    <video
-                      controls
-                      style={{
-                        maxWidth: '100%',
-                        maxHeight: '60vh',
-                        width: 'auto',
-                        height: 'auto'
-                      }}
-                    >
-                      <source src={messages[currentIndex].mediaUrl} />
-                    </video>
-                  )}
-                </div>
-              )}
-              <p className="message-text">{messages[currentIndex]?.text}</p>
-              <div className="message-author">
-                - {messages[currentIndex]?.author}
+            {messages[currentIndex]?.mediaUrl && (
+              <div className="message-media">
+                {messages[currentIndex]?.mediaType === 'image' ? (
+                  <img
+                    src={messages[currentIndex].mediaUrl}
+                    alt="Media del mensaje"
+                  />
+                ) : (
+                  <video controls>
+                    <source src={messages[currentIndex].mediaUrl} />
+                  </video>
+                )}
               </div>
+            )}
+            <p className="message-text">{messages[currentIndex]?.text}</p>
+            <div className="message-author">
+              - {messages[currentIndex]?.author}
             </div>
           </div>
         ) : (
@@ -361,24 +329,9 @@ function LinkWebMensajesNovios({ sala = 'boda' }) {
                       <img
                         src={message.mediaUrl}
                         alt="Media del mensaje"
-                        style={{
-                          maxWidth: '100%',
-                          maxHeight: '200px',
-                          width: 'auto',
-                          height: 'auto',
-                          objectFit: 'contain'
-                        }}
                       />
                     ) : (
-                      <video
-                        controls
-                        style={{
-                          maxWidth: '100%',
-                          maxHeight: '200px',
-                          width: 'auto',
-                          height: 'auto'
-                        }}
-                      >
+                      <video controls>
                         <source src={message.mediaUrl} />
                       </video>
                     )}
@@ -408,7 +361,7 @@ function LinkWebMensajesNovios({ sala = 'boda' }) {
         )}
       </div>
 
-      {/* CONTROLES PANTALLA COMPLETA - Navegación entre mensajes */}
+      {/* Controles de pantalla completa */}
       {isFullscreen && messages.length > 1 && (
         <div className="fullscreen-controls">
           <button
@@ -436,4 +389,4 @@ function LinkWebMensajesNovios({ sala = 'boda' }) {
   );
 }
 
-export default LinkWebMensajesNovios;
+export default PanelMensajesBodaAleyFaby;

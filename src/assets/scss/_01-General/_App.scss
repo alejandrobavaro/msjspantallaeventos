@@ -1,157 +1,178 @@
 /* ========================================================= */
-/* _01-General/_App.scss - Estilo Moderno Juvenil            */
+/* _01-General/_App.scss - Estilos principales de la aplicación */
 /* ========================================================= */
 
-/* --- Reset general --- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
-  height: 100%;
-  scroll-behavior: smooth;
-  font-size: 16px; /* Tamaño base más grande para mejor legibilidad */
-}
-
-body {
-  font-family: 'Poppins', sans-serif; /* Tipografía más moderna */
-  color: #333;
-  line-height: 1.6;
-  background-color: #fef6f6; /* Fondo rosado muy suave */
-  overflow-x: hidden;
-}
-
-/* --- Contenedor Principal --- */
-.app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  width: 100%;
-  margin: 0 auto;
-  position: relative;
-  background: #fff;
-  box-shadow: 0 0 20px rgba(0,0,0,0.05);
-}
-
-/* --- Contenido Principal --- */
-.main-content {
-  flex: 1;
-  padding: 1rem;
-}
-
-.content-wrapper {
-  width: 100%;
-  padding: 0 1rem;
-}
-
-/* --- Tipografías --- */
-h1, h2, h3, h4, h5, h6 {
-  margin-bottom: 1rem;
-  font-family: 'Montserrat', sans-serif; /* Tipografía para títulos */
-  font-weight: 700;
-  color: #ff5e8a; /* Color rosado fuerte para títulos */
-}
-
-h1 {
-  font-size: 2rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  position: relative;
-  display: inline-block;
-  
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, #ff5e8a, #ff8a5e);
-    border-radius: 3px;
-  }
-}
-
-p {
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-
-/* --- Botones y Links --- */
-a, button {
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-/* --- Efectos de hover --- */
-a:hover {
-  opacity: 0.8;
-}
-
-/* --- Scrollbar --- */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #ff5e8a;
-  border-radius: 4px;
-}
-
-/* ========================================================= */
-/* RESPONSIVE DESIGN - MOBILE FIRST                          */
-/* ========================================================= */
-
-/* Tablets (768px) */
-@media (min-width: 768px) {
-  .main-content {
-    padding: 1.5rem;
-  }
-  
-  .content-wrapper {
-    max-width: 720px;
-    margin: 0 auto;
+/* [1] Reset general de estilos 
+   - Elimina márgenes y paddings por defecto
+   - Establece box-sizing: border-box para todos los elementos */
+   * {
+    margin: 0;
     padding: 0;
+    box-sizing: border-box;
   }
   
-  h1 {
-    font-size: 2.5rem;
-  }
-}
-
-/* Desktop (1024px) */
-@media (min-width: 1024px) {
-  .app-container {
-    max-width: 1200px;
-  }
-  
-  .main-content {
-    padding: 2rem;
-  }
-  
-  h1 {
-    font-size: 3rem;
-  }
-}
-
-/* --- Patrón de fondo moderno --- */
-.app-bg-pattern {
-  position: relative;
-  overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+  /* [2] Estilos base para html y body
+     - Asegura que ocupen toda la altura de la pantalla
+     - Configura el scroll suave */
+  html, body {
     height: 100%;
-    background-image: 
-      radial-gradient(circle at 10% 20%, rgba(255, 94, 138, 0.05) 0%, transparent 20%),
-      radial-gradient(circle at 90% 80%, rgba(255, 138, 94, 0.05) 0%, transparent 20%);
-    z-index: -1;
+    scroll-behavior: smooth;
+    font-size: 16px; /* Tamaño base de fuente */
   }
-}
+  
+  /* [3] Estilos del body
+     - Define la tipografía principal
+     - Establece colores base
+     - Fondo rosado suave */
+  body {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #fef6f6;
+    overflow-x: hidden; /* Previene scroll horizontal */
+  }
+  
+  /* [4] Contenedor Principal de la aplicación
+     - Estructura flexbox vertical
+     - Ocupa mínimo el 100% del viewport height */
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    background: #fff;
+    box-shadow: 0 0 20px rgba(0,0,0,0.05); /* Sutil sombra */
+  }
+  
+  /* [5] Contenido Principal
+     - flex: 1 hace que crezca para ocupar el espacio disponible
+     - Padding básico para móvil */
+  .main-content {
+    flex: 1;
+    padding: 1rem;
+  }
+  
+  /* [6] Wrapper del contenido
+     - Controla el ancho máximo del contenido
+     - Padding lateral para móvil */
+  .content-wrapper {
+    width: 100%;
+    padding: 0 1rem;
+  }
+  
+  /* [7] Estilos de Tipografía
+     - Configuración de títulos y párrafos */
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #ff5e8a; /* Color rosado para títulos */
+  }
+  
+  h1 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+    
+    /* Subrayado decorativo para h1 */
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #ff5e8a, #ff8a5e);
+      border-radius: 3px;
+    }
+  }
+  
+  /* Estilos base para párrafos */
+  p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  /* [8] Estilos para botones y enlaces
+     - Transiciones suaves para interacciones */
+  a, button {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  /* Efecto hover para enlaces */
+  a:hover {
+    opacity: 0.8;
+  }
+  
+  /* [9] Personalización de la scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #ff5e8a;
+    border-radius: 4px;
+  }
+  
+  /* ========================================================= */
+  /* MEDIA QUERIES - DISEÑO RESPONSIVE                          */
+  /* ========================================================= */
+  
+  /* [10] Breakpoint para tablets (768px) */
+  @media (min-width: 768px) {
+    .main-content {
+      padding: 1.5rem; /* Más padding en tablet */
+    }
+    
+    .content-wrapper {
+      max-width: 720px; /* Ancho máximo para tablet */
+      margin: 0 auto; /* Centrado horizontal */
+      padding: 0; /* Sin padding lateral en tablet */
+    }
+    
+    h1 {
+      font-size: 2.5rem; /* Título más grande en tablet */
+    }
+  }
+  
+  /* [11] Breakpoint para desktop (1024px) */
+  @media (min-width: 1024px) {
+    .app-container {
+      max-width: 1200px; /* Ancho máximo para desktop */
+    }
+    
+    .main-content {
+      padding: 2rem; /* Más padding en desktop */
+    }
+    
+    h1 {
+      font-size: 3rem; /* Título más grande en desktop */
+    }
+  }
+  
+  /* [12] Patrón de fondo decorativo
+     - Crea un efecto visual sutil con gradientes radiales */
+  .app-bg-pattern {
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 94, 138, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 138, 94, 0.05) 0%, transparent 20%);
+      z-index: -1;
+    }
+  }

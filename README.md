@@ -1,4 +1,4 @@
-# Documentación del Componente `LinkWebMensajesNovios`
+# Documentación del Componente `PanelMensajesBodaAleyFaby`
 
 ## 📌 Visión General
 Componente React para un libro de visitas/mensajes digital para bodas, que permite:
@@ -119,7 +119,7 @@ graph TB
 ## 📂 Estructura de Archivos
 ```
 components/
-└── LinkWebMensajesNovios/
+└── PanelMensajesBodaAleyFaby/
     ├── index.js         # Componente principal
     └── styles.scss      # Estilos específicos
 ```
