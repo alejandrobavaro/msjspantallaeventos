@@ -22,30 +22,30 @@ function EventosPanel() {
   const eventos = [
     {
       id: 'boda', // Identificador único
-      nombre: 'Boda Principal', // Título del evento
-      fecha: '15 de Diciembre, 2023', // Fecha del evento
-      descripcion: 'Ceremonia y recepción de nuestra boda', // Descripción breve
+      nombre: 'Boda Ale y Fabi', // Título del evento
+      fecha: '23 de Noviembre, 2025', // Fecha del evento
+      descripcion: 'Mensajea a los novios en vivo en pantalla grande', // Descripción breve
       link: '/mensajes-boda', // Ruta interna para el panel
       activo: true, // Estado activo/inactivo
-      imagen: '/img/eventos/boda.jpg' // Imagen de portada
-    },
-    {
-      id: 'after',
-      nombre: 'After Party',
-      fecha: '15 de Diciembre, 2023 - 23:00hs',
-      descripcion: 'Fiesta después de la recepción',
-      link: '/mensajes-after',
-      activo: false,
-      imagen: '/img/eventos/after.jpg'
+      imagen: '/img/04-img-galeria1/banereventofabiyale1.png' // Imagen de portada
     },
     {
       id: 'despedida',
-      nombre: 'Despedida de Solteros',
-      fecha: '10 de Diciembre, 2023',
-      descripcion: 'Última fiesta antes del gran día',
+      nombre: 'Despedida de Soltero',
+      fecha: 'Octubre, 2025',
+      descripcion: 'Última fiesta antes del gran día para él',
       link: '/mensajes-despedida',
       activo: false,
-      imagen: '/img/eventos/despedida.jpg'
+   imagen: '/img/04-img-galeria1/panelproximamente3.png'
+    },
+    {
+      id: 'despedida',
+      nombre: 'Despedida de Soltera',
+      fecha: 'Octubre, 2023',
+      descripcion: 'Última fiesta antes del gran día para ella',
+      link: '/mensajes-despedida',
+      activo: false,
+ imagen: '/img/04-img-galeria1/panelproximamente2.png'
     }
   ];
 

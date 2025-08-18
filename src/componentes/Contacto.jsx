@@ -30,9 +30,10 @@ const Contacto = () => {
   // --------------------------------
   // Array con las rutas de las imágenes de demostración
   const messageScreenshots = [
-    "/img/02-logos/logomsjpantallaeventos4.png",
-    "/img/02-logos/logomsjpantallaeventos2.png",
-    "img/02-logos/logomsjpantallaeventos1.png"
+    "/img/02-logos/logomsjpantallaeventos4b.png",
+    "/img/02-logos/logomsjpantallaeventos4c.png",
+    "img/02-logos/logomsjpantallaeventos4d.png",
+    "/img/02-logos/logomsjpantallaeventos4a.png"
   ];
 
   // [SECCIÓN 3] Renderizado del Componente
@@ -49,8 +50,8 @@ const Contacto = () => {
           </h2>
           
           {/* Grid de tarjetas con preguntas frecuentes */}
-          <div className="features-grid">
-            {/* Tarjeta individual - Cada pregunta/respuesta */}
+          {/* <div className="features-grid">
+   
             <div className="feature-card">
               <h3 className="feature-title">¿Cómo funciona?</h3>
               <p className="feature-text">Envía mensajes que se mostrarán en pantalla durante el evento</p>
@@ -70,7 +71,7 @@ const Contacto = () => {
               <h3 className="feature-title">¿Quién puede verlos?</h3>
               <p className="feature-text">Todos los invitados podrán ver los mensajes en las pantallas</p>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
