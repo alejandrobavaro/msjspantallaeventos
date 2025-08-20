@@ -2,34 +2,75 @@ import React, { useState, useEffect, useRef } from "react";
 import "../assets/scss/_03-Componentes/_PanelMensajesBodaAleyFaby.scss";
 import { Heart, ChevronLeft, ChevronRight, X, Edit3, Trash2, Paperclip } from "react-feather";
 
+// [COMPONENTE PRINCIPAL] Panel de mensajes para boda
+// [PROPS] sala: define la sala de mensajes (por defecto 'boda')
 function PanelMensajesBodaAleyFaby({ sala = 'boda' }) {
-  // Estados del componente
+  // =========================================================
+  // ESTADOS DEL COMPONENTE
+  // =========================================================
+  
+  // [ESTADO] Almacena todos los mensajes cargados
   const [messages, setMessages] = useState([]);
+  
+  // [ESTADO] Texto del nuevo mensaje en formulario
   const [newMessage, setNewMessage] = useState("");
+  
+  // [ESTADO] Autor del mensaje en formulario
   const [author, setAuthor] = useState("");
+  
+  // [ESTADO] Controla visualmente el estado de envío (loading)
   const [isSending, setIsSending] = useState(false);
+  
+  // [ESTADO] Controla si se muestra el formulario
   const [showForm, setShowForm] = useState(true);
+  
+  // [ESTADO] Modo edición (true) o creación (false)
   const [editMode, setEditMode] = useState(false);
+  
+  // [ESTADO] Índice del mensaje actual en modo pantalla completa
   const [currentIndex, setCurrentIndex] = useState(0);
+  
+  // [ESTADO] Controla el modo pantalla completa
   const [isFullscreen, setIsFullscreen] = useState(false);
+  
+  // [ESTADO] Archivo multimedia seleccionado
   const [mediaFile, setMediaFile] = useState(null);
+  
+  // [ESTADO] URL de previsualización del archivo multimedia
   const [mediaPreview, setMediaPreview] = useState(null);
+  
+  // [ESTADO] Tipo de archivo multimedia ('image' o 'video')
   const [mediaType, setMediaType] = useState(null);
+  
+  // [ESTADO] Intervalo de rotación en pantalla completa (milisegundos)
   const [rotationInterval, setRotationInterval] = useState(10000);
 
-  // Referencias
+  // =========================================================
+  // REFERENCIAS
+  // =========================================================
+  
+  // [REF] Referencia al input de archivo para resetearlo
   const fileInputRef = useRef(null);
+  
+  // [REF] Referencia al contenedor de mensajes (no usado actualmente)
   const messagesContainerRef = useRef(null);
+  
+  // [REF] Referencia al intervalo de auto-scroll
   const autoScrollInterval = useRef(null);
 
-  // Efectos
+  // =========================================================
+  // EFECTOS (HOOKS DE CICLO DE VIDA)
+  // =========================================================
+
+  // [EFECTO] Cargar mensajes desde localStorage al montar el componente
+  // [DEPENDENCIA] sala - se ejecuta cuando cambia la sala
   useEffect(() => {
     const savedMessages = localStorage.getItem(`weddingMessages_${sala}`);
     if (savedMessages) {
       try {
         const parsedMessages = JSON.parse(savedMessages);
         if (Array.isArray(parsedMessages)) {
-          setMessages(parsedMessages.slice(0, 50));
+          setMessages(parsedMessages.slice(0, 50)); // Limitar a 50 mensajes
         }
       } catch (error) {
         console.error("Error parsing messages:", error);
@@ -37,6 +78,8 @@ function PanelMensajesBodaAleyFaby({ sala = 'boda' }) {
     }
   }, [sala]);
 
+  // [EFECTO] Guardar mensajes en localStorage cuando cambian
+  // [DEPENDENCIA] messages, sala - se ejecuta cuando cambian los mensajes o la sala
   useEffect(() => {
     if (messages.length > 0) {
       try {
@@ -59,6 +102,8 @@ function PanelMensajesBodaAleyFaby({ sala = 'boda' }) {
     }
   }, [messages, sala]);
 
+  // [EFECTO] Configurar intervalo de rotación automática en pantalla completa
+  // [DEPENDENCIA] isFullscreen, messages.length, rotationInterval
   useEffect(() => {
     if (isFullscreen && messages.length > 0) {
       autoScrollInterval.current = setInterval(() => {
@@ -68,11 +113,16 @@ function PanelMensajesBodaAleyFaby({ sala = 'boda' }) {
     }
   }, [isFullscreen, messages.length, rotationInterval]);
 
-  // Manejadores
+  // =========================================================
+  // MANEJADORES DE EVENTOS
+  // =========================================================
+
+  // [MANEJADOR] Procesar selección de archivo multimedia
   const handleMediaChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
+    // Validar tamaño máximo (2MB imágenes, 5MB videos)
     const maxSize = file.type.startsWith('image/') ? 2 * 1024 * 1024 : 5 * 1024 * 1024;
     if (file.size > maxSize) {
       alert(`El archivo es demasiado grande. Máximo permitido: ${maxSize/(1024*1024)}MB`);
@@ -92,6 +142,7 @@ function PanelMensajesBodaAleyFaby({ sala = 'boda' }) {
     }
   };
 
+  // [MANEJADOR] Eliminar archivo multimedia seleccionado
   const removeMedia = () => {
     setMediaFile(null);
     setMediaPreview(null);
@@ -99,10 +150,13 @@ function PanelMensajesBodaAleyFaby({ sala = 'boda' }) {
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
+  // [MANEJADOR] Enviar formulario de nuevo mensaje
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!newMessage.trim() || !author.trim()) return;
     setIsSending(true);
+    
+    // Crear nuevo objeto de mensaje
     const newMsg = {
       id: Date.now(),
       text: newMessage,
@@ -117,10 +171,12 @@ function PanelMensajesBodaAleyFaby({ sala = 'boda' }) {
       createdAt: new Date().getTime()
     };
 
+    // Agregar mensaje al inicio y limitar a 50 mensajes
     setMessages(prev => [newMsg, ...prev].slice(0, 50));
     resetForm();
   };
 
+  // [FUNCIÓN] Resetear formulario a estado inicial
   const resetForm = () => {
     setNewMessage("");
     setAuthor("");
@@ -133,10 +189,12 @@ function PanelMensajesBodaAleyFaby({ sala = 'boda' }) {
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
+  // [MANEJADOR] Eliminar mensaje por ID
   const handleDelete = (id) => {
     setMessages(messages.filter(msg => msg.id !== id));
   };
 
+  // [MANEJADOR] Editar mensaje existente
   const handleEdit = (message) => {
     setNewMessage(message.text);
     setAuthor(message.author);
@@ -146,12 +204,16 @@ function PanelMensajesBodaAleyFaby({ sala = 'boda' }) {
     }
     setEditMode(true);
     setShowForm(true);
-    handleDelete(message.id);
+    handleDelete(message.id); // Eliminar el mensaje original para reemplazarlo
   };
 
+  // =========================================================
+  // RENDERIZADO DEL COMPONENTE
+  // =========================================================
   return (
     <div className={`panel-container ${isFullscreen ? 'fullscreen' : ''}`}>
-      {/* Encabezado */}
+      
+      {/* ENCABEZADO - Muestra título y controles según modo */}
       <div className="panel-header">
         <h2 className="panel-title">
           <Heart className="title-icon" />
@@ -190,7 +252,7 @@ function PanelMensajesBodaAleyFaby({ sala = 'boda' }) {
         )}
       </div>
 
-      {/* Formulario */}
+      {/* FORMULARIO - Solo visible en modo normal (no fullscreen) */}
       {!isFullscreen && showForm && (
         <form className="panel-form" onSubmit={handleSubmit}>
           <div className="form-header">
@@ -208,6 +270,7 @@ function PanelMensajesBodaAleyFaby({ sala = 'boda' }) {
             </button>
           </div>
           
+          {/* Campo para nombre del autor */}
           <div className="form-group">
             <label htmlFor="author">Tu Nombre</label>
             <input
@@ -221,6 +284,7 @@ function PanelMensajesBodaAleyFaby({ sala = 'boda' }) {
             />
           </div>
           
+          {/* Campo para texto del mensaje */}
           <div className="form-group">
             <label htmlFor="message">Tu Mensaje</label>
             <textarea
@@ -235,6 +299,7 @@ function PanelMensajesBodaAleyFaby({ sala = 'boda' }) {
             <div className="char-counter">{newMessage.length}/200</div>
           </div>
           
+          {/* Sección multimedia para adjuntar archivos */}
           <div className="media-section">
             <label className="media-label">
               <input
@@ -267,6 +332,7 @@ function PanelMensajesBodaAleyFaby({ sala = 'boda' }) {
             )}
           </div>
           
+          {/* Botón de enviar/actualizar */}
           <button
             type="submit"
             className="submit-btn"
@@ -277,7 +343,7 @@ function PanelMensajesBodaAleyFaby({ sala = 'boda' }) {
         </form>
       )}
 
-      {/* Botón mostrar formulario */}
+      {/* BOTÓN PARA MOSTRAR FORMULARIO - Solo cuando está oculto */}
       {!isFullscreen && !showForm && (
         <button
           className="show-form-btn"
@@ -287,18 +353,20 @@ function PanelMensajesBodaAleyFaby({ sala = 'boda' }) {
         </button>
       )}
 
-      {/* Contenedor de mensajes */}
+      {/* CONTENEDOR DE MENSAJES - Vista diferente según modo */}
       <div
         className={`messages-container ${isFullscreen ? 'fullscreen-view' : ''}`}
         ref={messagesContainerRef}
       >
         {messages.length === 0 ? (
+          // ESTADO VACÍO - Cuando no hay mensajes
           <div className="empty-state">
             <Heart size={48} />
             <p>No hay mensajes aún</p>
             <p>Sé el primero en enviar buenos deseos</p>
           </div>
         ) : isFullscreen ? (
+          // VISTA PANTALLA COMPLETA - Muestra un mensaje a la vez
           <div className="fullscreen-message">
             {messages[currentIndex]?.mediaUrl && (
               <div className="message-media">
@@ -320,6 +388,7 @@ function PanelMensajesBodaAleyFaby({ sala = 'boda' }) {
             </div>
           </div>
         ) : (
+          // VISTA NORMAL - Grid de todos los mensajes
           <div className="messages-grid">
             {messages.map((message) => (
               <div key={message.id} className="message-card">
@@ -361,7 +430,7 @@ function PanelMensajesBodaAleyFaby({ sala = 'boda' }) {
         )}
       </div>
 
-      {/* Controles de pantalla completa */}
+      {/* CONTROLES DE PANTALLA COMPLETA - Navegación entre mensajes */}
       {isFullscreen && messages.length > 1 && (
         <div className="fullscreen-controls">
           <button

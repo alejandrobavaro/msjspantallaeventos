@@ -1,22 +1,24 @@
-//------------GENERAL--------------//
-@import "./_01-General/App";
+// =========================================================
+// ARCHIVO PRINCIPAL DE ESTILOS - ESTRATEGIA @use
+// =========================================================
 
+
+//------------GENERAL--------------//
+// [IMPORTANTE] Variables y estilos base de la aplicación
+@use "./_01-General/App";
 
 //------------HEADER--------------//
-@import "./_03-Componentes/Header";
+// [IMPORTANTE] Estilos del componente Header (navegación, logo, etc.)
+@use "./_03-Componentes/Header";
 
+//------------FOOTER--------------//
+// [IMPORTANTE] Estilos del componente Footer (información de contacto, copyright)
+@use "./_03-Componentes/Footer";
 
-//--------------FOOTER----------------//
-@import "./_03-Componentes/Footer";
+//------------CONTACTO------------//
+// [IMPORTANTE] Estilos del formulario de contacto y sección de información
+@use "./_03-Componentes/Contacto";
 
-@import "./_03-Componentes/Contacto";
-
-@import "./_03-Componentes/PanelMensajesBodaAleyFaby";
-
-
-
-
-
-
-
-
+//------------PANEL MENSAJES------//
+// [IMPORTANTE] Estilos del panel de mensajes para la boda (componente principal)
+@use "./_03-Componentes/PanelMensajesBodaAleyFaby";

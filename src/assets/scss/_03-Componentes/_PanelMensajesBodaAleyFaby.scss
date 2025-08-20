@@ -1,8 +1,8 @@
 /* ========================================================= */
-/* _03-Componentes/_PanelMensajesBodaAleyFaby.scss - Estilo Moderno */
+/* ESTILOS PARA PANEL DE MENSAJES DE BODA - Mobile First */
 /* ========================================================= */
 
-/* 1. Estructura Base - Mobile First */
+/* CONTENEDOR PRINCIPAL */
 .panel-container {
   width: 100%;
   max-width: 100%;
@@ -10,12 +10,12 @@
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
   background: #fef6f6;
   min-height: 100vh;
   box-sizing: border-box;
 
-  /* Modo pantalla completa */
+  /* Modo pantalla completa - Fondo gradient y posición fija */
   &.fullscreen {
     padding: 0;
     background: linear-gradient(135deg, #ff5e8a, #ff8a5e);
@@ -28,11 +28,10 @@
   }
 }
 
-/* 2. Encabezado */
+/* ENCABEZADO DEL PANEL */
 .panel-header {
   text-align: center;
   padding: 1rem;
-  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -49,12 +48,9 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  
-  .title-icon {
-    color: #ff5e8a;
-  }
 }
 
+/* CONTROLES DEL PANEL */
 .panel-controls {
   display: flex;
   align-items: center;
@@ -66,7 +62,6 @@
   align-items: center;
   gap: 0.5rem;
   color: white;
-  font-family: 'Montserrat', sans-serif;
 
   select {
     background: rgba(255, 255, 255, 0.2);
@@ -75,21 +70,16 @@
     border-radius: 4px;
     padding: 0.5rem;
     cursor: pointer;
-
-    option {
-      color: #ff5e8a;
-      background: white;
-    }
   }
 }
 
+/* BOTONES PRINCIPALES */
 .exit-btn, .fullscreen-btn {
   background: rgba(255, 255, 255, 0.2);
   color: white;
   border: 1px solid white;
   border-radius: 4px;
   padding: 0.5rem 1rem;
-  font-family: 'Montserrat', sans-serif;
   cursor: pointer;
   transition: all 0.3s ease;
 
@@ -104,11 +94,11 @@
   border: none;
   
   &:hover {
-    background: rgba(97, 13, 100, 0.699);
+    background: #e0557c;
   }
 }
 
-/* 3. Formulario */
+/* FORMULARIO DE MENSAJES */
 .panel-form {
   background: white;
   border-radius: 12px;
@@ -137,13 +127,13 @@
   }
 }
 
+/* GRUPOS DE FORMULARIO */
 .form-group {
   margin-bottom: 1.2rem;
 
   label {
     display: block;
     margin-bottom: 0.5rem;
-    font-family: 'Poppins', sans-serif;
     color: #666;
     font-weight: 500;
   }
@@ -153,7 +143,6 @@
     padding: 0.8rem 1rem;
     border: 1px solid #ddd;
     border-radius: 8px;
-    font-family: 'Poppins', sans-serif;
     font-size: 0.9rem;
     transition: all 0.3s ease;
     background: rgba(255, 255, 255, 0.9);
@@ -162,10 +151,6 @@
       outline: none;
       border-color: #ff5e8a;
       box-shadow: 0 0 0 3px rgba(255, 94, 138, 0.1);
-    }
-    
-    &::placeholder {
-      color: #aaa;
     }
   }
 
@@ -181,6 +166,7 @@
   }
 }
 
+/* BOTÓN DE ENVÍO */
 .submit-btn {
   width: 100%;
   padding: 1rem;
@@ -188,14 +174,9 @@
   color: white;
   border: none;
   border-radius: 8px;
-  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
   transition: all 0.3s ease;
   margin-top: 0.5rem;
   
@@ -210,6 +191,7 @@
   }
 }
 
+/* BOTÓN MOSTRAR FORMULARIO */
 .show-form-btn {
   width: 100%;
   padding: 1rem;
@@ -217,7 +199,6 @@
   color: #ff5e8a;
   border: 1px solid #ff5e8a;
   border-radius: 8px;
-  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
@@ -228,7 +209,7 @@
   }
 }
 
-/* 4. Sección multimedia */
+/* SECCIÓN MULTIMEDIA */
 .media-section {
   margin-bottom: 1.2rem;
 
@@ -242,13 +223,8 @@
     border: 1px dashed #ff8a5e;
     border-radius: 8px;
     margin-bottom: 0.5rem;
-    font-family: 'Poppins', sans-serif;
     font-size: 0.9rem;
     transition: all 0.3s ease;
-    
-    &:hover {
-      background: rgba(255, 94, 138, 0.05);
-    }
   }
 
   .media-preview {
@@ -286,7 +262,7 @@
   }
 }
 
-/* 5. Contenedor de mensajes */
+/* CONTENEDOR DE MENSAJES */
 .messages-container {
   width: 100%;
   min-height: 60vh;
@@ -301,6 +277,7 @@
   }
 }
 
+/* ESTADO VACÍO */
 .empty-state {
   text-align: center;
   padding: 2rem;
@@ -310,7 +287,6 @@
 
   p {
     margin: 0.5rem 0;
-    font-family: 'Poppins', sans-serif;
     color: #666;
   }
 
@@ -320,12 +296,14 @@
   }
 }
 
+/* GRID DE MENSAJES */
 .messages-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1rem;
 }
 
+/* TARJETA DE MENSAJE INDIVIDUAL */
 .message-card {
   background: white;
   border-radius: 8px;
@@ -356,7 +334,6 @@
     flex: 1;
     margin: 0 0 1rem 0;
     line-height: 1.5;
-    font-family: 'Poppins', sans-serif;
     color: #555;
   }
 
@@ -368,7 +345,6 @@
     padding-top: 0.5rem;
 
     .message-author {
-      font-family: 'Poppins', sans-serif;
       font-style: italic;
       color: #ff5e8a;
       font-size: 0.9rem;
@@ -395,6 +371,7 @@
   }
 }
 
+/* MENSAJE EN PANTALLA COMPLETA */
 .fullscreen-message {
   width: 100%;
   max-width: 800px;
@@ -424,7 +401,6 @@
     font-size: 1.8rem;
     line-height: 1.4;
     margin-bottom: 1.5rem;
-    font-family: 'Dancing Script', cursive;
     color: #333;
     text-align: center;
   }
@@ -434,10 +410,10 @@
     color: #ff5e8a;
     font-style: italic;
     text-align: center;
-    font-family: 'Poppins', sans-serif;
   }
 }
 
+/* CONTROLES DE PANTALLA COMPLETA */
 .fullscreen-controls {
   display: flex;
   justify-content: center;
@@ -466,7 +442,6 @@
 
   .counter {
     color: white;
-    font-family: 'Montserrat', sans-serif;
     min-width: 80px;
     text-align: center;
     font-size: 1.1rem;
@@ -474,12 +449,12 @@
 }
 
 /* ========================================================= */
-/* RESPONSIVE: Tablet (768px)                                */
+/* RESPONSIVE: Tablet (768px) */
 /* ========================================================= */
 @media (min-width: 768px) {
   .panel-container {
     padding: 2rem;
-    gap: 2.5rem;
+    gap: 2rem;
   }
 
   .panel-title {
@@ -505,13 +480,13 @@
 }
 
 /* ========================================================= */
-/* RESPONSIVE: Desktop (1024px)                              */
+/* RESPONSIVE: Desktop (1024px) */
 /* ========================================================= */
 @media (min-width: 1024px) {
   .panel-container {
     max-width: 1200px;
     padding: 3rem 2rem;
-    gap: 3rem;
+    gap: 2.5rem;
   }
 
   .panel-title {
